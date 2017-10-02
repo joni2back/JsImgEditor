@@ -72,3 +72,11 @@ html,body{
     margin: 2px 0;
     padding: 5px 10px;
   }
+
+.wrap-file-btn>input[type=file] {
+  display: none;
+}
+
+.wrap-file-btn.btn {
+  color:#fff!important;
+}

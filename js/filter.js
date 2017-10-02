@@ -4,6 +4,7 @@ window.onload = function() {
     // img.onload = function(elem) {
     //     draw(this);
     // };
+    parseFileBtns();
 };
 
 var downloadbtn = document.getElementById('downloadbtn');
@@ -14,6 +15,21 @@ downloadbtn.addEventListener('click', function() {
     downloadlink.setAttribute('href', url);
     downloadlink.click();
 });
+
+function parseFileBtns() {
+    var fileBtns = document.querySelectorAll('.wrap-file-btn');
+    fileBtns.forEach(function($element) {
+        $element.addEventListener('click', function(eventClick) {
+            var $file = $element.querySelector('input[type=file]');
+            var $fileName = $element.querySelector('.filename');
+            $file.click();
+            $file.addEventListener('change', function(eventChange) {
+                var fileName = this.value && this.value.split('\\').pop();
+                $fileName.innerText = '(%s)'.replace('%s', fileName);
+            });
+        });
+    });
+}
 
 function draw(img) {
     var canvas = document.getElementById('canvas');
